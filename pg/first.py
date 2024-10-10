@@ -5,7 +5,7 @@ def sudy_nebo_lichy(cislo):
     else:
         return print(f"Číslo {cislo} je liché")
 
-
+#fffgf
 sudy_nebo_lichy(5)
 sudy_nebo_lichy(1000)
 sudy_nebo_lichy(70)
