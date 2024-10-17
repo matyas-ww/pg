@@ -41,7 +41,3 @@ if __name__ == "__main__":
 
 
 #bolestgit push -u origin master
-fdsa
-fd
-
-fdsfsd
