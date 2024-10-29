@@ -7,7 +7,7 @@ def je_tah_mozny(figurka, cilova_pozice, obsazene_pozice):
     if not (1 <= cilova_pozice[0] <= 8 and 1 <= cilova_pozice[1] <= 8):
         return False
     
-    # Ověření, zda je cílová pozice volná
+    # Ověření, zda jecvbcbcb cílová pozice volná
     if cilova_pozice in obsazene_pozice:
         return False
     
