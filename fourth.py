@@ -3,7 +3,7 @@ def je_tah_mozny(figurka, cilova_pozice, obsazene_pozice):
     typ = figurka["typ"]
     start = figurka["pozice"]
 
-    # Ověření, zda je cílová pozice na šachovnici
+    # Ověření, zda je cílová pozice na šammmmchovnici
     if not (1 <= cilova_pozice[0] <= 8 and 1 <= cilova_pozice[1] <= 8):
         return False
     
