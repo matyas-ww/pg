@@ -1,38 +1,30 @@
 def je_tah_mozny(figurka, cilova_pozice, obsazene_pozice):
-    # Extrahování typu a pozice ze struktury figurka
+    
     typ = figurka["typ"]
     start = figurka["pozice"]
 
-    # Ověření, zda je cílová pozice na šammmmchovnici
     if not (1 <= cilova_pozice[0] <= 8 and 1 <= cilova_pozice[1] <= 8):
         return False
     
-    # Ověření, zda jecvbcbcb cílová pozice volná
     if cilova_pozice in obsazene_pozice:
         return False
     
-    # Výpočet rozdílů mezi startovní a cílovou pozicí
     dx = cilova_pozice[0] - start[0]
     dy = cilova_pozice[1] - start[1]
 
-    # Logika pohybu pro jednotlivé figury
     if typ == "pěšec":
-        # Pěšec se může pohnout o jedno pole dopředu nebo dvě, pokud je na výchozím poli
-        if dy == 0:  # Směr musí být vertikálně
-            # Jedno pole dopředu
+        if dy == 0:  
             if dx == 1 and cilova_pozice not in obsazene_pozice:
                 return True
-            # Dvě pole dopředu, pokud pěšec je na výchozím poli (řádek 2)
+            
             elif start[0] == 2 and dx == 2 and (start[0] + 1, start[1]) not in obsazene_pozice:
                 return True
         return False
     
-    elif typ == "jezdec":
-        # Jezdec se pohybuje ve tvaru "L"
+    elif typ == "jezdec":   
         return (abs(dx), abs(dy)) in [(2, 1), (1, 2)]
     
     elif typ == "věž":
-        # Věž se pohybuje horizontálně nebo vertikálně
         if dx == 0 or dy == 0:
             krok_x = 1 if dx > 0 else -1 if dx < 0 else 0
             krok_y = 1 if dy > 0 else -1 if dy < 0 else 0
@@ -46,7 +38,6 @@ def je_tah_mozny(figurka, cilova_pozice, obsazene_pozice):
         return False
     
     elif typ == "střelec":
-        # Střelec se pohybuje diagonálně
         if abs(dx) == abs(dy):
             krok_x = 1 if dx > 0 else -1
             krok_y = 1 if dy > 0 else -1
@@ -60,7 +51,6 @@ def je_tah_mozny(figurka, cilova_pozice, obsazene_pozice):
         return False
     
     elif typ == "dáma":
-        # Dáma se pohybuje jako věž nebo střelec
         if dx == 0 or dy == 0:
             krok_x = 1 if dx > 0 else -1 if dx < 0 else 0
             krok_y = 1 if dy > 0 else -1 if dy < 0 else 0
@@ -83,11 +73,8 @@ def je_tah_mozny(figurka, cilova_pozice, obsazene_pozice):
             return True
         return False
     
-    elif typ == "král":
-        # Král se může pohnout o jedno pole v libovolném směru
-        return max(abs(dx), abs(dy)) == 1
-    
-    # Pokud figurka není rozpoznána
+    elif typ == "král":      
+        return max(abs(dx), abs(dy)) == 1 
     return False
 
 
