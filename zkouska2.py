@@ -27,19 +27,22 @@ def fetch_and_save_data():
     try:
         # ziskani dat z url adresy
         response = requests.get(url)
-        response.raise_for_status()  # osetreni erroru
+        if response.status_code != 200: 
+            print(f"HTTP chyba: Kód stavu {response.status_code}")
+            return []
+        
         data = response.json()
 
-        
+    
         for item in data:
-            user_id = item.get("userId")
+            user_id = item.get("userId") # ulozim slovnik s daty .get metoda slovnika
             if user_id in user_names:
                 item["userName"] = user_names[user_id]
 
         # ulozeni dat do json sobrou
-        with open("data.json", "w",) as soubor:
-            json.dump(data, soubor, ensure_ascii=False, indent=4)
-
+        with open("data.json", "w",) as file:
+            json.dump(data, file)
+        
         return True
     except Exception as e:
         print(f"vyskytla se chyba: {e}")

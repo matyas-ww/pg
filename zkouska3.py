@@ -8,11 +8,25 @@
 from abc import ABC, abstractmethod
 
 class Shape(ABC):
-    @abstractmethod
+    @abstractmethod 
     def area(self):
         pass
 
 # ZDE DOPLŇTE VLASTNÍ KÓD
+class Rectangle(Shape): # podtrida rectagnle
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+class Circle(Shape): # podtrida circle
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return 3.14159 * self.radius ** 2
 
 from unittest.mock import patch, MagicMock, mock_open
 
