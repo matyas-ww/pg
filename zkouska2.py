@@ -37,16 +37,18 @@ def fetch_and_save_data():
                 item["userName"] = user_names[user_id]
 
         # ulozeni dat do json sobrou
-        with open("data.json", "w", encoding="utf-8") as file:
-            json.dump(data, file, ensure_ascii=False, indent=4)
+        with open("data.json", "w",) as soubor:
+            json.dump(data, soubor, ensure_ascii=False, indent=4)
 
         return True
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"vyskytla se chyba: {e}")
         return False
+    
+
+
 # Pytest testy pro Příklad 2
 from unittest.mock import patch, MagicMock, mock_open
-
 def test_fetch_and_save_data():
     mock_data = [
         {"userId": 1, "id": 1, "title": "Test post", "body": "This is a test."}
