@@ -24,9 +24,26 @@ user_names = {
 }
 
 def fetch_and_save_data():
-    # ZDE NAPIŠTE VÁŠ KÓD
-    pass
+    try:
+        # ziskani dat z url adresy
+        response = requests.get(url)
+        response.raise_for_status()  # osetreni erroru
+        data = response.json()
 
+        
+        for item in data:
+            user_id = item.get("userId")
+            if user_id in user_names:
+                item["userName"] = user_names[user_id]
+
+        # ulozeni dat do json sobrou
+        with open("data.json", "w", encoding="utf-8") as file:
+            json.dump(data, file, ensure_ascii=False, indent=4)
+
+        return True
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return False
 # Pytest testy pro Příklad 2
 from unittest.mock import patch, MagicMock, mock_open
 
